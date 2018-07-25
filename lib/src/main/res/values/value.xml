@@ -1,0 +1,98 @@
+<resources>
+    <string name="app_name">lib</string>
+
+    <dimen name="fuck_tab_scrollable_min_width">72dp</dimen>
+    <dimen name="fuck_tab_max_width">264dp</dimen>
+    <dimen name="fuck_tab_text_size">14sp</dimen>
+    <dimen name="fuck_tab_text_size_2line">12sp</dimen>
+
+    <integer name="fuck_tab_indicator_anim_duration_ms">300</integer>
+    <integer name="mtrl_tab_indicator_anim_duration_ms">250</integer>
+
+    <attr name="fuckTabStyle" format="reference"/>
+
+    <declare-styleable name="FuckTabLayout">
+        <attr name="tabIndicatorColor" format="color"/>
+        <attr name="tabIndicatorHeight" format="dimension"/>
+        <attr name="tabContentStart" format="dimension"/>
+        <attr name="tabBackground" format="reference"/>
+        <attr name="tabIndicator" format="reference"/>
+        <attr name="tabIndicatorGravity">
+            <enum name="bottom" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="top" value="2"/>
+            <enum name="stretch" value="3"/>
+        </attr>
+        <attr name="tabIndicatorAnimationDuration" format="integer"/>
+        <attr name="tabIndicatorFullWidth" format="boolean"/>
+        <attr name="tabMode">
+            <enum name="scrollable" value="0"/>
+            <enum name="fixed" value="1"/>
+        </attr>
+        <attr name="tabGravity">
+            <enum name="fill" value="0"/>
+            <enum name="center" value="1"/>
+        </attr>
+        <attr name="tabInlineLabel" format="boolean"/>
+        <attr name="tabMinWidth" format="dimension"/>
+        <attr name="tabMaxWidth" format="dimension"/>
+        <attr name="tabTextAppearance" format="reference"/>
+        <attr name="tabTextColor" format="color"/>
+        <attr name="tabSelectedTextColor" format="color"/>
+        <attr name="tabPaddingStart" format="dimension"/>
+        <attr name="tabPaddingTop" format="dimension"/>
+        <attr name="tabPaddingEnd" format="dimension"/>
+        <attr name="tabPaddingBottom" format="dimension"/>
+        <attr name="tabPadding" format="dimension"/>
+        <attr name="tabIconTint" format="color"/>
+        <attr name="tabIconTintMode">
+            <enum name="src_over" value="3"/>
+            <enum name="src_in" value="5"/>
+            <enum name="src_atop" value="9"/>
+            <enum name="multiply" value="14"/>
+            <enum name="screen" value="15"/>
+            <enum name="add" value="16"/>
+        </attr>
+        <attr name="tabRippleColor" format="color"/>
+        <attr name="tabUnboundedRipple" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="FuckTabItem">
+        <attr name="android:text"/>
+        <attr name="android:icon"/>
+        <attr name="android:layout"/>
+    </declare-styleable>
+
+    <style name="Widget.Design.FuckTabLayout" parent="Base.Widget.Design.FuckTabLayout">
+        <item name="tabGravity">fill</item>
+        <item name="tabMode">fixed</item>
+        <item name="tabIndicatorFullWidth">true</item>
+    </style>
+
+    <style name="Base.Widget.Design.FuckTabLayout" parent="android:Widget">
+        <item name="android:background">@null</item>
+        <item name="tabIconTint">@null</item>
+        <item name="tabMaxWidth">@dimen/fuck_tab_max_width</item>
+        <item name="tabIndicatorAnimationDuration">@integer/fuck_tab_indicator_anim_duration_ms</item>
+        <item name="tabIndicatorColor">?attr/colorAccent</item>
+        <item name="tabIndicatorGravity">bottom</item>
+        <item name="tabIndicator">@drawable/mtrl_tabs_default_indicator</item>
+        <item name="tabPaddingStart">12dp</item>
+        <item name="tabPaddingEnd">12dp</item>
+        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
+        <item name="tabRippleColor">?attr/colorControlHighlight</item>
+        <item name="tabUnboundedRipple">false</item>
+    </style>
+
+    <style name="TextAppearance.Design.Tab" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textSize">@dimen/fuck_tab_text_size</item>
+        <item name="android:textColor">@color/mtrl_tabs_legacy_text_color_selector</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.Design.FuckTab" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textSize">@dimen/fuck_tab_text_size</item>
+        <item name="android:textColor">@color/mtrl_tabs_legacy_text_color_selector</item>
+        <item name="textAllCaps">true</item>
+    </style>
+</resources>
