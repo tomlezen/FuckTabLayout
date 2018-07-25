@@ -32,4 +32,4 @@ FuckTabLayout.removeBadge(index)
 获取角标
 FuckTabLayout.getBadge(index)
 ```
-具体细节可参考MainActivity使用
+具体细节可参考[MainActivity](https://github.com/tomlezen/FuckTabLayout/blob/master/app/src/main/java/com/tlz/fucktablayout/example/MainActivity.kt)使用
