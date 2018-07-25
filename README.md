@@ -13,9 +13,9 @@ implementation 'com.github.tomlezen:FuckTabLayout:1.0.0'
 api使用与TabLayout一致，如果需要设置指示器宽度与文字宽度一致，设置`tabIndicatorFullWidth`属性为`false`即可
 
 ```
-添加小红点(默认颜色为red):
-FuckTabLayout.addDotBadge(index, color)
-添加数字角标(默认颜色为red, textColor为white，textSize为11dp):
+添加小红点(默认color为red, radius为2dp):
+FuckTabLayout.addDotBadge(index, color, radius)
+添加数字角标(默认color为red, textColor为white，textSize为11sp):
 FuckTabLayout.addNumberBadge(index, number, color, textColor, textSize)
 自定义角标
 FuckTabLayout.addBadge(index, object: Badge(color){
