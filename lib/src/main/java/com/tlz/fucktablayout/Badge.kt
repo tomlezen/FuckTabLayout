@@ -25,7 +25,15 @@ abstract class Badge(protected val color: Int) {
 
     protected val paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
+    /**
+     * Badge的宽度.
+     * @return Int
+     */
     abstract fun getMeasureWidth(): Int
+    /**
+     * Badge的高度.
+     * @return Int
+     */
     abstract fun getMeasureHeight(): Int
 
     abstract fun draw(cvs: Canvas, drawnRectF: RectF)
