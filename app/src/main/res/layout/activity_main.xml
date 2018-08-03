@@ -12,10 +12,10 @@
         android:id="@+id/ftl_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabIndicatorColor="@color/colorPrimary"
-        app:tabMode="fixed"
-        app:tabSelectedTextColor="@android:color/black"
-        app:tabTextColor="@android:color/darker_gray"/>
+        app:fTabIndicatorColor="@color/colorPrimary"
+        app:fTabMode="fixed"
+        app:fTabSelectedTextColor="@android:color/black"
+        app:fTabTextColor="@android:color/darker_gray"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_1"
@@ -26,11 +26,11 @@
         android:id="@+id/ftl_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabIndicatorColor="@color/colorPrimary"
-        app:tabIndicatorFullWidth="false"
-        app:tabMode="fixed"
-        app:tabSelectedTextColor="@android:color/black"
-        app:tabTextColor="@android:color/darker_gray"/>
+        app:fTabIndicatorColor="@color/colorPrimary"
+        app:fTabIndicatorFullWidth="false"
+        app:fTabMode="fixed"
+        app:fTabSelectedTextColor="@android:color/black"
+        app:fTabTextColor="@android:color/darker_gray"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_2"
@@ -41,10 +41,10 @@
         android:id="@+id/ftl_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabIndicatorColor="@android:color/holo_red_light"
-        app:tabMode="scrollable"
-        app:tabSelectedTextColor="@android:color/black"
-        app:tabTextColor="@android:color/darker_gray"/>
+        app:fTabIndicatorColor="@android:color/holo_red_light"
+        app:fTabMode="scrollable"
+        app:fTabSelectedTextColor="@android:color/black"
+        app:fTabTextColor="@android:color/darker_gray"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_3"

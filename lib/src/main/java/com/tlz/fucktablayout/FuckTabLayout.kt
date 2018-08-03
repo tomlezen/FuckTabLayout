@@ -170,22 +170,22 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
 
         val a = ctx.obtainStyledAttributes(attrs, R.styleable.FuckTabLayout, R.attr.fuckTabStyle, R.style.Widget_Design_FuckTabLayout)
 
-        slidingTabIndicator.setSelectedIndicatorHeight(a.getDimensionPixelSize(R.styleable.FuckTabLayout_tabIndicatorHeight, -1))
-        slidingTabIndicator.setSelectedIndicatorColor(a.getColor(R.styleable.FuckTabLayout_tabIndicatorColor, 0))
-        tabSelectedIndicator = a.getDrawable(R.styleable.FuckTabLayout_tabIndicator)
-        tabIndicatorGravity = a.getInt(R.styleable.FuckTabLayout_tabIndicatorGravity, INDICATOR_GRAVITY_BOTTOM)
-        tabIndicatorFullWidth = a.getBoolean(R.styleable.FuckTabLayout_tabIndicatorFullWidth, true)
+        slidingTabIndicator.setSelectedIndicatorHeight(a.getDimensionPixelSize(R.styleable.FuckTabLayout_fTabIndicatorHeight, -1))
+        slidingTabIndicator.setSelectedIndicatorColor(a.getColor(R.styleable.FuckTabLayout_fTabIndicatorColor, 0))
+        tabSelectedIndicator = a.getDrawable(R.styleable.FuckTabLayout_fTabIndicator)
+        tabIndicatorGravity = a.getInt(R.styleable.FuckTabLayout_fTabIndicatorGravity, INDICATOR_GRAVITY_BOTTOM)
+        tabIndicatorFullWidth = a.getBoolean(R.styleable.FuckTabLayout_fTabIndicatorFullWidth, true)
 
-        tabPaddingStart = a.getDimensionPixelSize(R.styleable.FuckTabLayout_tabPadding, 0)
+        tabPaddingStart = a.getDimensionPixelSize(R.styleable.FuckTabLayout_fTabPadding, 0)
         tabPaddingTop = tabPaddingStart
         tabPaddingEnd = tabPaddingStart
         tabPaddingBottom = tabPaddingStart
-        tabPaddingStart = a.getDimensionPixelSize(R.styleable.FuckTabLayout_tabPaddingStart, tabPaddingStart)
-        tabPaddingTop = a.getDimensionPixelSize(R.styleable.FuckTabLayout_tabPaddingTop, tabPaddingTop)
-        tabPaddingEnd = a.getDimensionPixelSize(R.styleable.FuckTabLayout_tabPaddingEnd, tabPaddingEnd)
-        tabPaddingBottom = a.getDimensionPixelSize(R.styleable.FuckTabLayout_tabPaddingBottom, tabPaddingBottom)
+        tabPaddingStart = a.getDimensionPixelSize(R.styleable.FuckTabLayout_fTabPaddingStart, tabPaddingStart)
+        tabPaddingTop = a.getDimensionPixelSize(R.styleable.FuckTabLayout_fTabPaddingTop, tabPaddingTop)
+        tabPaddingEnd = a.getDimensionPixelSize(R.styleable.FuckTabLayout_fTabPaddingEnd, tabPaddingEnd)
+        tabPaddingBottom = a.getDimensionPixelSize(R.styleable.FuckTabLayout_fTabPaddingBottom, tabPaddingBottom)
 
-        tabTextAppearance = a.getResourceId(R.styleable.FuckTabLayout_tabTextAppearance, R.style.TextAppearance_Design_FuckTab)
+        tabTextAppearance = a.getResourceId(R.styleable.FuckTabLayout_fTabTextAppearance, R.style.TextAppearance_Design_FuckTab)
 
         val ta = context.obtainStyledAttributes(tabTextAppearance, android.support.v7.appcompat.R.styleable.TextAppearance)
         try {
@@ -195,31 +195,31 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
             ta.recycle()
         }
 
-        if (a.hasValue(R.styleable.FuckTabLayout_tabTextColor)) {
-            tabTextColors = getColorStateList(context, a, R.styleable.FuckTabLayout_tabTextColor)
+        if (a.hasValue(R.styleable.FuckTabLayout_fTabTextColor)) {
+            tabTextColors = getColorStateList(context, a, R.styleable.FuckTabLayout_fTabTextColor)
         }
 
-        if (a.hasValue(R.styleable.FuckTabLayout_tabSelectedTextColor)) {
-            val selected = a.getColor(R.styleable.FuckTabLayout_tabSelectedTextColor, 0)
+        if (a.hasValue(R.styleable.FuckTabLayout_fTabSelectedTextColor)) {
+            val selected = a.getColor(R.styleable.FuckTabLayout_fTabSelectedTextColor, 0)
             tabTextColors = createColorStateList(tabTextColors!!.defaultColor, selected)
         }
 
-        tabIconTint = getColorStateList(context, a, R.styleable.FuckTabLayout_tabIconTint)
-        tabIconTintMode = parseTintMode(a.getInt(R.styleable.FuckTabLayout_tabIconTintMode, -1), null)
+        tabIconTint = getColorStateList(context, a, R.styleable.FuckTabLayout_fTabIconTint)
+        tabIconTintMode = parseTintMode(a.getInt(R.styleable.FuckTabLayout_fTabIconTintMode, -1), null)
 
-        tabRippleColorStateList = getColorStateList(context, a, R.styleable.FuckTabLayout_tabRippleColor)
+        tabRippleColorStateList = getColorStateList(context, a, R.styleable.FuckTabLayout_fTabRippleColor)
 
-        tabIndicatorAnimationDuration = a.getInt(R.styleable.FuckTabLayout_tabIndicatorAnimationDuration, ANIMATION_DURATION)
+        tabIndicatorAnimationDuration = a.getInt(R.styleable.FuckTabLayout_fTabIndicatorAnimationDuration, ANIMATION_DURATION)
 
-        requestedTabMinWidth = a.getDimensionPixelSize(R.styleable.FuckTabLayout_tabMinWidth, INVALID_WIDTH)
-        requestedTabMaxWidth = a.getDimensionPixelSize(R.styleable.FuckTabLayout_tabMaxWidth, INVALID_WIDTH)
-        tabBackgroundResId = a.getResourceId(R.styleable.FuckTabLayout_tabBackground, 0)
-        contentInsetStart = a.getDimensionPixelSize(R.styleable.FuckTabLayout_tabContentStart, 0)
+        requestedTabMinWidth = a.getDimensionPixelSize(R.styleable.FuckTabLayout_fTabMinWidth, INVALID_WIDTH)
+        requestedTabMaxWidth = a.getDimensionPixelSize(R.styleable.FuckTabLayout_fTabMaxWidth, INVALID_WIDTH)
+        tabBackgroundResId = a.getResourceId(R.styleable.FuckTabLayout_fTabBackground, 0)
+        contentInsetStart = a.getDimensionPixelSize(R.styleable.FuckTabLayout_fTabContentStart, 0)
 
-        mode = a.getInt(R.styleable.FuckTabLayout_tabMode, MODE_FIXED)
-        tabGravity = a.getInt(R.styleable.FuckTabLayout_tabGravity, GRAVITY_FILL)
-        inlineLabel = a.getBoolean(R.styleable.FuckTabLayout_tabInlineLabel, false)
-        unboundedRipple = a.getBoolean(R.styleable.FuckTabLayout_tabUnboundedRipple, false)
+        mode = a.getInt(R.styleable.FuckTabLayout_fTabMode, MODE_FIXED)
+        tabGravity = a.getInt(R.styleable.FuckTabLayout_fTabGravity, GRAVITY_FILL)
+        inlineLabel = a.getBoolean(R.styleable.FuckTabLayout_fTabInlineLabel, false)
+        unboundedRipple = a.getBoolean(R.styleable.FuckTabLayout_fTabUnboundedRipple, false)
         a.recycle()
 
 

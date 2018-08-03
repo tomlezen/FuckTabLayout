@@ -12,40 +12,40 @@
     <attr name="fuckTabStyle" format="reference"/>
 
     <declare-styleable name="FuckTabLayout">
-        <attr name="tabIndicatorColor" format="color"/>
-        <attr name="tabIndicatorHeight" format="dimension"/>
-        <attr name="tabContentStart" format="dimension"/>
-        <attr name="tabBackground" format="reference"/>
-        <attr name="tabIndicator" format="reference"/>
-        <attr name="tabIndicatorGravity">
+        <attr name="fTabIndicatorColor" format="color"/>
+        <attr name="fTabIndicatorHeight" format="dimension"/>
+        <attr name="fTabContentStart" format="dimension"/>
+        <attr name="fTabBackground" format="reference"/>
+        <attr name="fTabIndicator" format="reference"/>
+        <attr name="fTabIndicatorGravity">
             <enum name="bottom" value="0"/>
             <enum name="center" value="1"/>
             <enum name="top" value="2"/>
             <enum name="stretch" value="3"/>
         </attr>
-        <attr name="tabIndicatorAnimationDuration" format="integer"/>
-        <attr name="tabIndicatorFullWidth" format="boolean"/>
-        <attr name="tabMode">
+        <attr name="fTabIndicatorAnimationDuration" format="integer"/>
+        <attr name="fTabIndicatorFullWidth" format="boolean"/>
+        <attr name="fTabMode">
             <enum name="scrollable" value="0"/>
             <enum name="fixed" value="1"/>
         </attr>
-        <attr name="tabGravity">
+        <attr name="fTabGravity">
             <enum name="fill" value="0"/>
             <enum name="center" value="1"/>
         </attr>
-        <attr name="tabInlineLabel" format="boolean"/>
-        <attr name="tabMinWidth" format="dimension"/>
-        <attr name="tabMaxWidth" format="dimension"/>
-        <attr name="tabTextAppearance" format="reference"/>
-        <attr name="tabTextColor" format="color"/>
-        <attr name="tabSelectedTextColor" format="color"/>
-        <attr name="tabPaddingStart" format="dimension"/>
-        <attr name="tabPaddingTop" format="dimension"/>
-        <attr name="tabPaddingEnd" format="dimension"/>
-        <attr name="tabPaddingBottom" format="dimension"/>
-        <attr name="tabPadding" format="dimension"/>
-        <attr name="tabIconTint" format="color"/>
-        <attr name="tabIconTintMode">
+        <attr name="fTabInlineLabel" format="boolean"/>
+        <attr name="fTabMinWidth" format="dimension"/>
+        <attr name="fTabMaxWidth" format="dimension"/>
+        <attr name="fTabTextAppearance" format="reference"/>
+        <attr name="fTabTextColor" format="color"/>
+        <attr name="fTabSelectedTextColor" format="color"/>
+        <attr name="fTabPaddingStart" format="dimension"/>
+        <attr name="fTabPaddingTop" format="dimension"/>
+        <attr name="fTabPaddingEnd" format="dimension"/>
+        <attr name="fTabPaddingBottom" format="dimension"/>
+        <attr name="fTabPadding" format="dimension"/>
+        <attr name="fTabIconTint" format="color"/>
+        <attr name="fTabIconTintMode">
             <enum name="src_over" value="3"/>
             <enum name="src_in" value="5"/>
             <enum name="src_atop" value="9"/>
@@ -53,8 +53,8 @@
             <enum name="screen" value="15"/>
             <enum name="add" value="16"/>
         </attr>
-        <attr name="tabRippleColor" format="color"/>
-        <attr name="tabUnboundedRipple" format="boolean"/>
+        <attr name="fTabRippleColor" format="color"/>
+        <attr name="fTabUnboundedRipple" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="FuckTabItem">
@@ -64,24 +64,24 @@
     </declare-styleable>
 
     <style name="Widget.Design.FuckTabLayout" parent="Base.Widget.Design.FuckTabLayout">
-        <item name="tabGravity">fill</item>
-        <item name="tabMode">fixed</item>
-        <item name="tabIndicatorFullWidth">true</item>
+        <item name="fTabGravity">fill</item>
+        <item name="fTabMode">fixed</item>
+        <item name="fTabIndicatorFullWidth">true</item>
     </style>
 
     <style name="Base.Widget.Design.FuckTabLayout" parent="android:Widget">
         <item name="android:background">@null</item>
-        <item name="tabIconTint">@null</item>
-        <item name="tabMaxWidth">@dimen/fuck_tab_max_width</item>
-        <item name="tabIndicatorAnimationDuration">@integer/fuck_tab_indicator_anim_duration_ms</item>
-        <item name="tabIndicatorColor">?attr/colorAccent</item>
-        <item name="tabIndicatorGravity">bottom</item>
-        <item name="tabIndicator">@drawable/mtrl_tabs_default_indicator</item>
-        <item name="tabPaddingStart">12dp</item>
-        <item name="tabPaddingEnd">12dp</item>
-        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
-        <item name="tabRippleColor">?attr/colorControlHighlight</item>
-        <item name="tabUnboundedRipple">false</item>
+        <item name="fTabIconTint">@null</item>
+        <item name="fTabMaxWidth">@dimen/fuck_tab_max_width</item>
+        <item name="fTabIndicatorAnimationDuration">@integer/fuck_tab_indicator_anim_duration_ms</item>
+        <item name="fTabIndicatorColor">?attr/colorAccent</item>
+        <item name="fTabIndicatorGravity">bottom</item>
+        <item name="fTabIndicator">@drawable/mtrl_tabs_default_indicator</item>
+        <item name="fTabPaddingStart">12dp</item>
+        <item name="fTabPaddingEnd">12dp</item>
+        <item name="fTabTextAppearance">@style/TextAppearance.Design.Tab</item>
+        <item name="fTabRippleColor">?attr/colorControlHighlight</item>
+        <item name="fTabUnboundedRipple">false</item>
     </style>
 
     <style name="TextAppearance.Design.Tab" parent="TextAppearance.AppCompat.Button">
