@@ -1,5 +1,5 @@
 # FuckTabLayout
-FuckTabLayout是直接修改的TabLayout源码，将java代码改为了kotlin代码，没有改动其原有的api，并在基础上增加滑动文字颜色渐变以及角标设置等功能
+FuckTabLayout是直接修改的TabLayout源码，将java代码改为了kotlin代码，没有改动其原有的api，所有的自定义属性在原名上增加了`f`,如：tabMode -> fTabMode，并在基础上增加滑动文字颜色渐变以及角标设置等功能
 
 <img src="https://github.com/tomlezen/FuckTabLayout/blob/master/screenshot/ezgif.com-video-to-gif.gif?raw=true" alt="arc" style="max-width:100%;">
 
