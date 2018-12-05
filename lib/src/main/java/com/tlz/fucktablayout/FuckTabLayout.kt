@@ -134,6 +134,11 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
             field = value
             ViewCompat.postInvalidateOnAnimation(slidingTabIndicator)
         }
+    var tabIndicatorFixedWidth: Int = 0
+        set(value) {
+            field = value
+            ViewCompat.postInvalidateOnAnimation(slidingTabIndicator)
+        }
     var unboundedRipple: Boolean = false
         set(value) {
             if (value != field) {
@@ -164,9 +169,10 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
     init {
         isHorizontalScrollBarEnabled = false
         super.addView(
-                slidingTabIndicator,
-                0,
-                FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.MATCH_PARENT))
+            slidingTabIndicator,
+            0,
+            FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.MATCH_PARENT)
+        )
 
         val a = ctx.obtainStyledAttributes(attrs, R.styleable.FuckTabLayout, R.attr.fuckTabStyle, R.style.Widget_Design_FuckTabLayout)
 
@@ -175,6 +181,7 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
         tabSelectedIndicator = a.getDrawable(R.styleable.FuckTabLayout_fTabIndicator)
         tabIndicatorGravity = a.getInt(R.styleable.FuckTabLayout_fTabIndicatorGravity, INDICATOR_GRAVITY_BOTTOM)
         tabIndicatorFullWidth = a.getBoolean(R.styleable.FuckTabLayout_fTabIndicatorFullWidth, true)
+        tabIndicatorFixedWidth = a.getDimensionPixelSize(R.styleable.FuckTabLayout_fTabIndicatorFixedWidth, 0)
 
         tabPaddingStart = a.getDimensionPixelSize(R.styleable.FuckTabLayout_fTabPadding, 0)
         tabPaddingTop = tabPaddingStart
@@ -413,9 +420,9 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
     }
 
     fun addDotBadge(index: Int, color: Int = Color.RED, radius: Int = dpToPx(DEFAULT_DOT_BADGE_RADIUS)): DotBadge =
-            DotBadge(color, radius).apply {
-                addBadge(index, this)
-            }
+        DotBadge(color, radius).apply {
+            addBadge(index, this)
+        }
 
     fun addNumberBadge(index: Int, number: Int, color: Int = Color.RED, textColor: Int = Color.WHITE, textSize: Int = dpToPx(DEFAULT_NUMBER_BADGE_TEXT_SIZE)) =
         NumberBadge(color, textColor, textSize).apply {
@@ -493,7 +500,7 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
     }
 
     private fun getTabScrollRange(): Int =
-            Math.max(0, slidingTabIndicator.width - width - paddingLeft - paddingRight)
+        Math.max(0, slidingTabIndicator.width - width - paddingLeft - paddingRight)
 
     private fun setPagerAdapter(adapter: PagerAdapter?, addObserver: Boolean) {
         pagerAdapter?.unregisterDataSetObserver(pagerAdapterObserver)
@@ -681,7 +688,7 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
             scrollAnimator = ValueAnimator().apply {
                 interpolator = FastOutSlowInInterpolator()
                 duration = tabIndicatorAnimationDuration.toLong()
-                addUpdateListener({ scrollTo(it.animatedValue as Int, 0) })
+                addUpdateListener { scrollTo(it.animatedValue as Int, 0) }
             }
         }
     }
@@ -754,8 +761,7 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
 
 
             val scrollBase = selectedChild.left + (selectedWidth / 2) - (width / 2)
-            val scrollOffset = ((selectedWidth + nextWidth) * 0.5f * positionOffset)
-                    .toInt()
+            val scrollOffset = ((selectedWidth + nextWidth) * 0.5f * positionOffset).toInt()
             return if (ViewCompat.getLayoutDirection(this) == ViewCompat.LAYOUT_DIRECTION_LTR) scrollBase + scrollOffset else scrollBase - scrollOffset
         }
         return 0
@@ -829,15 +835,15 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
     }
 
     private fun parseTintMode(value: Int, defaultMode: PorterDuff.Mode?): PorterDuff.Mode? =
-            when (value) {
-                3 -> PorterDuff.Mode.SRC_OVER
-                5 -> PorterDuff.Mode.SRC_IN
-                9 -> PorterDuff.Mode.SRC_ATOP
-                14 -> PorterDuff.Mode.MULTIPLY
-                15 -> PorterDuff.Mode.SCREEN
-                16 -> PorterDuff.Mode.ADD
-                else -> defaultMode
-            }
+        when (value) {
+            3 -> PorterDuff.Mode.SRC_OVER
+            5 -> PorterDuff.Mode.SRC_IN
+            9 -> PorterDuff.Mode.SRC_ATOP
+            14 -> PorterDuff.Mode.MULTIPLY
+            15 -> PorterDuff.Mode.SCREEN
+            16 -> PorterDuff.Mode.ADD
+            else -> defaultMode
+        }
 
     private fun getColorStateList(context: Context, attributes: TypedArray, @StyleableRes index: Int): ColorStateList? {
         if (attributes.hasValue(index)) {
@@ -1000,7 +1006,7 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
                 val curLineCount = it.lineCount
                 val curMaxLines = TextViewCompat.getMaxLines(it)
 
-                if (textSize != curTextSize || curMaxLines >= 0 && maxLines != curMaxLines) {
+                if (textSize != curTextSize || (curMaxLines >= 0 && maxLines != curMaxLines)) {
                     var updateTextView = true
 
                     if (mode == MODE_FIXED && textSize > curTextSize && curLineCount == 1) {
@@ -1031,10 +1037,11 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
                     val right = min(width.toFloat(), width / 2 + contentWidth / 2 + badgeWidth + 2f)
                     val top = max(0f, height / 2 - contentHeight / 2f - badgeHeight / 2f)
                     badgeDrawnRectF.set(
-                            right - badgeWidth,
-                            top,
-                            right,
-                            top + badgeHeight)
+                        right - badgeWidth,
+                        top,
+                        right,
+                        top + badgeHeight
+                    )
                     it.draw(cvs, badgeDrawnRectF)
                 }
             }
@@ -1308,10 +1315,16 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
                 left = selectedTitle.left
                 right = selectedTitle.right
 
-                if (!tabIndicatorFullWidth && selectedTitle is FuckTabView) {
-                    selectedTitle.calculateTabViewContentBounds(tabViewContentBounds)
-                    left = tabViewContentBounds.left.toInt()
-                    right = tabViewContentBounds.right.toInt()
+                if (selectedTitle is FuckTabView) {
+                    if (tabIndicatorFixedWidth > 0) {
+                        val centerX = (selectedTitle.left + selectedTitle.right) / 2
+                        left = max(left, centerX - tabIndicatorFixedWidth / 2)
+                        right = min(right, centerX + tabIndicatorFixedWidth / 2)
+                    } else if (!tabIndicatorFullWidth) {
+                        selectedTitle.calculateTabViewContentBounds(tabViewContentBounds)
+                        left = tabViewContentBounds.left.toInt()
+                        right = tabViewContentBounds.right.toInt()
+                    }
                 }
 
                 if (selectionOffset > 0f && selectedPosition < childCount - 1) {
@@ -1319,10 +1332,16 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
                     var nextTitleLeft = nextTitle.left
                     var nextTitleRight = nextTitle.right
 
-                    if (!tabIndicatorFullWidth && nextTitle is FuckTabView) {
-                        nextTitle.calculateTabViewContentBounds(tabViewContentBounds)
-                        nextTitleLeft = tabViewContentBounds.left.toInt()
-                        nextTitleRight = tabViewContentBounds.right.toInt()
+                    if (nextTitle is FuckTabView) {
+                        if (tabIndicatorFixedWidth > 0) {
+                            val centerX = (nextTitle.left + nextTitle.right) / 2
+                            nextTitleLeft = max(nextTitleLeft, centerX - tabIndicatorFixedWidth / 2)
+                            nextTitleRight = min(nextTitleRight, centerX + tabIndicatorFixedWidth / 2)
+                        } else if (!tabIndicatorFullWidth) {
+                            nextTitle.calculateTabViewContentBounds(tabViewContentBounds)
+                            nextTitleLeft = tabViewContentBounds.left.toInt()
+                            nextTitleRight = tabViewContentBounds.right.toInt()
+                        }
                     }
 
                     left = (selectionOffset * nextTitleLeft + (1.0f - selectionOffset) * left).toInt()
@@ -1363,11 +1382,18 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
             var targetLeft = targetView.left
             var targetRight = targetView.right
 
-            if (!tabIndicatorFullWidth && targetView is FuckTabView) {
-                targetView.calculateTabViewContentBounds(tabViewContentBounds)
-                targetLeft = tabViewContentBounds.left.toInt()
-                targetRight = tabViewContentBounds.right.toInt()
+            if (targetView is FuckTabView) {
+                if (tabIndicatorFixedWidth > 0) {
+                    val centerX = (targetView.left + targetView.right) / 2
+                    targetLeft = max(targetLeft, centerX - tabIndicatorFixedWidth / 2)
+                    targetRight = min(targetRight, centerX + tabIndicatorFixedWidth / 2)
+                } else if (!tabIndicatorFullWidth) {
+                    targetView.calculateTabViewContentBounds(tabViewContentBounds)
+                    targetLeft = tabViewContentBounds.left.toInt()
+                    targetRight = tabViewContentBounds.right.toInt()
+                }
             }
+
 
             val finalTargetLeft = targetLeft
             val finalTargetRight = targetRight
@@ -1380,11 +1406,11 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
                     interpolator = FastOutSlowInInterpolator()
                     setDuration(duration.toLong())
                     setFloatValues(0f, 1f)
-                    addUpdateListener({
+                    addUpdateListener {
                         setIndicatorPosition(lerp(startLeft, finalTargetLeft, animatedFraction), lerp(startRight, finalTargetRight, animatedFraction))
                         (getChildAt(position) as FuckTabView).updateTextColor(getTextColorByFraction(animatedFraction))
                         (getChildAt(selectedPosition) as FuckTabView).updateTextColor(getTextColorByFraction(1 - animatedFraction))
-                    })
+                    }
                     addListener(object : AnimatorListenerAdapter() {
                         override fun onAnimationEnd(animation: Animator?) {
                             selectedPosition = position
@@ -1440,7 +1466,7 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
         private val selectedState = intArrayOf(android.R.attr.state_selected)
 
         private fun getTextColorByFraction(fraction: Float) =
-                argbEvaluator.evaluate(fraction, tabTextColors?.defaultColor, tabTextColors?.getColorForState(selectedState, tabTextColors?.defaultColor ?: Color.WHITE)) as Int
+            argbEvaluator.evaluate(fraction, tabTextColors?.defaultColor, tabTextColors?.getColorForState(selectedState, tabTextColors?.defaultColor ?: Color.WHITE)) as Int
     }
 
     class TabLayoutOnPageChangeListener(tabLayout: FuckTabLayout) : ViewPager.OnPageChangeListener {
@@ -1498,8 +1524,7 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
         }
     }
 
-    private inner class AdapterChangeListener(var autoRefresh: Boolean = false)
-        : ViewPager.OnAdapterChangeListener {
+    private inner class AdapterChangeListener(var autoRefresh: Boolean = false) : ViewPager.OnAdapterChangeListener {
 
         override fun onAdapterChanged(viewPager: ViewPager, oldAdapter: PagerAdapter?, newAdapter: PagerAdapter?) {
             if (this@FuckTabLayout.viewPager == viewPager) {
@@ -1528,11 +1553,13 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
         const val INDICATOR_GRAVITY_TOP = 2
         const val INDICATOR_GRAVITY_STRETCH = 3
 
-        @IntDef(value = [
-            INDICATOR_GRAVITY_BOTTOM,
-            INDICATOR_GRAVITY_CENTER,
-            INDICATOR_GRAVITY_TOP,
-            INDICATOR_GRAVITY_STRETCH])
+        @IntDef(
+            value = [
+                INDICATOR_GRAVITY_BOTTOM,
+                INDICATOR_GRAVITY_CENTER,
+                INDICATOR_GRAVITY_TOP,
+                INDICATOR_GRAVITY_STRETCH]
+        )
         @Retention(AnnotationRetention.SOURCE)
         annotation class TabIndicatorGravity
 

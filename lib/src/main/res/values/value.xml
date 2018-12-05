@@ -25,6 +25,7 @@
         </attr>
         <attr name="fTabIndicatorAnimationDuration" format="integer"/>
         <attr name="fTabIndicatorFullWidth" format="boolean"/>
+        <attr name="fTabIndicatorFixedWidth" format="dimension"/>
         <attr name="fTabMode">
             <enum name="scrollable" value="0"/>
             <enum name="fixed" value="1"/>

@@ -43,6 +43,7 @@
         android:layout_height="wrap_content"
         app:fTabIndicatorColor="@android:color/holo_red_light"
         app:fTabMode="scrollable"
+        app:fTabIndicatorFixedWidth="20dp"
         app:fTabSelectedTextColor="@android:color/black"
         app:fTabTextColor="@android:color/darker_gray"/>
 
