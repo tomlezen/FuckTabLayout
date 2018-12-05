@@ -6,11 +6,14 @@ FuckTabLayout是直接修改的TabLayout源码，将java代码改为了kotlin代
 ## Gradle
 
 ```
-implementation 'com.github.tomlezen:FuckTabLayout:1.0.0'
+implementation 'com.github.tomlezen:FuckTabLayout:1.0.2'
 ```
 ## 使用
 
-api使用与TabLayout一致，如果需要设置指示器宽度与文字宽度一致，设置`tabIndicatorFullWidth`属性为`false`即可
+api使用与TabLayout一致
+如果需要设置指示器宽度与文字宽度一致，设置`fTabIndicatorFullWidth`属性为`false`即可
+如果需要固定指示器宽度，使用`fTabIndicatorFixedWidth`属性即可
+
 
 ```
 添加小红点(默认color为red, radius为2dp):
