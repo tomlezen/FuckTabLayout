@@ -65,6 +65,14 @@ class MainActivity : AppCompatActivity() {
             // 修改数字.
             numberBadge.number = (numberBadge.number ?: 0) + 1
         }
+
+        ftl_4.addTab(ftl_4.newTab().apply {
+            text = "默认排序"
+        })
+        ftl_4.addTab(ftl_4.newTab().apply {
+            text = "距离排序"
+            ftl_4.requestLayout()
+        }, false)
     }
 
     class ViewPagerAdapter(private val count: Int = 5) : PagerAdapter() {
