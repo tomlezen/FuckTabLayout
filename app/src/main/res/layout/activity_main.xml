@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,10 +17,11 @@
             android:layout_height="wrap_content"
             app:fTabIndicatorColor="@color/colorPrimary"
             app:fTabMode="fixed"
+            app:fTabSelectedTextBold="true"
             app:fTabSelectedTextColor="@android:color/black"
             app:fTabTextColor="@android:color/darker_gray"/>
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp_1"
             android:layout_width="match_parent"
             android:layout_height="120dp"/>
@@ -36,7 +36,7 @@
             app:fTabSelectedTextColor="@android:color/black"
             app:fTabTextColor="@android:color/darker_gray"/>
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp_2"
             android:layout_width="match_parent"
             android:layout_height="120dp"/>
@@ -47,11 +47,11 @@
             android:layout_height="wrap_content"
             app:fTabIndicatorColor="@android:color/holo_red_light"
             app:fTabIndicatorFixedWidth="20dp"
-            app:fTabMode="scrollable"
+            app:fTabMode="auto"
             app:fTabSelectedTextColor="@android:color/black"
             app:fTabTextColor="@android:color/darker_gray"/>
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp_3"
             android:layout_width="match_parent"
             android:layout_height="120dp"/>
@@ -91,10 +91,12 @@
             android:layout_height="wrap_content"
             app:fTabIndicatorColor="@android:color/holo_red_light"
             app:fTabIndicatorFixedWidth="20dp"
+            app:fTabTextSize="14sp"
+            app:fTabTextIconGap="0dp"
             app:fTabMode="scrollable"
             app:fTabSelectedTextColor="@android:color/black"
             app:fTabTextColor="@android:color/darker_gray"/>
 
     </LinearLayout>
 
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

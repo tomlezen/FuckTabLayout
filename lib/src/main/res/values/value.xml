@@ -29,6 +29,7 @@
         <attr name="fTabMode">
             <enum name="scrollable" value="0"/>
             <enum name="fixed" value="1"/>
+            <enum name="auto" value="2"/>
         </attr>
         <attr name="fTabGravity">
             <enum name="fill" value="0"/>
@@ -39,7 +40,10 @@
         <attr name="fTabMaxWidth" format="dimension"/>
         <attr name="fTabTextAppearance" format="reference"/>
         <attr name="fTabTextColor" format="color"/>
+        <attr name="fTabTextSize" format="dimension"/>
         <attr name="fTabSelectedTextColor" format="color"/>
+        <attr name="fTabSelectedTextBold" format="boolean"/>
+        <!--<attr name="fTabSelectedTextSize" format="dimension"/>-->
         <attr name="fTabPaddingStart" format="dimension"/>
         <attr name="fTabPaddingTop" format="dimension"/>
         <attr name="fTabPaddingEnd" format="dimension"/>
@@ -54,6 +58,7 @@
             <enum name="screen" value="15"/>
             <enum name="add" value="16"/>
         </attr>
+        <attr name="fTabTextIconGap" format="dimension" />
         <attr name="fTabRippleColor" format="color"/>
         <attr name="fTabUnboundedRipple" format="boolean"/>
     </declare-styleable>
@@ -74,7 +79,8 @@
         <item name="android:background">@null</item>
         <item name="fTabIconTint">@null</item>
         <item name="fTabMaxWidth">@dimen/fuck_tab_max_width</item>
-        <item name="fTabIndicatorAnimationDuration">@integer/fuck_tab_indicator_anim_duration_ms</item>
+        <item name="fTabIndicatorAnimationDuration">@integer/fuck_tab_indicator_anim_duration_ms
+        </item>
         <item name="fTabIndicatorColor">?attr/colorAccent</item>
         <item name="fTabIndicatorGravity">bottom</item>
         <item name="fTabIndicator">@drawable/mtrl_tabs_default_indicator</item>

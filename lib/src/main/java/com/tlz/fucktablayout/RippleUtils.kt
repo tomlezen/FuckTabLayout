@@ -1,15 +1,13 @@
 package com.tlz.fucktablayout
 
-import android.support.v4.graphics.ColorUtils
-import android.support.annotation.ColorInt
-import android.os.Build.VERSION_CODES
 import android.annotation.TargetApi
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.util.StateSet
-import android.support.annotation.NonNull
 import android.os.Build.VERSION
-
+import android.os.Build.VERSION_CODES
+import android.util.StateSet
+import androidx.annotation.ColorInt
+import androidx.core.graphics.ColorUtils
 
 
 /**
@@ -19,7 +17,7 @@ import android.os.Build.VERSION
  */
 object RippleUtils {
 
-    val USE_FRAMEWORK_RIPPLE = VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP
+    private val USE_FRAMEWORK_RIPPLE = VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP
 
     private val PRESSED_STATE_SET = intArrayOf(android.R.attr.state_pressed)
     private val HOVERED_FOCUSED_STATE_SET = intArrayOf(android.R.attr.state_hovered, android.R.attr.state_focused)
