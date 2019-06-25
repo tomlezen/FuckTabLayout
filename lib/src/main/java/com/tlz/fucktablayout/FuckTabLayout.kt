@@ -1208,6 +1208,8 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
       tv?.setTextSize(TypedValue.COMPLEX_UNIT_PX, size)
       if (tabSelectedTextBold && tab?.isSelected == true) {
         tv?.typeface = Typeface.DEFAULT_BOLD
+      } else {
+        tv?.typeface = Typeface.DEFAULT
       }
     }
   }
