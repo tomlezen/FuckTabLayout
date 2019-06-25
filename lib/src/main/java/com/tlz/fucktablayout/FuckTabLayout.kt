@@ -1327,10 +1327,11 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
       super.onLayout(changed, l, t, r, b)
-      if (indicatorAnimator != null && indicatorAnimator!!.isRunning) {
-        indicatorAnimator!!.cancel()
-        val duration = indicatorAnimator!!.duration
-        animateIndicatorToPosition(selectedPosition, Math.round((1f - indicatorAnimator!!.animatedFraction) * duration))
+      if (indicatorAnimator?.isRunning == true) {
+        // 这里取消动画后 导致position错误 暂时注释代码
+//        indicatorAnimator?.cancel()
+//        val duration = indicatorAnimator?.duration ?: 0L
+//        animateIndicatorToPosition(selectedPosition, Math.round((1f - indicatorAnimator!!.animatedFraction) * duration))
       } else {
         updateIndicatorPosition()
       }
@@ -1405,8 +1406,8 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
     }
 
     internal fun animateIndicatorToPosition(position: Int, duration: Int) {
-      if (indicatorAnimator != null && indicatorAnimator!!.isRunning) {
-        indicatorAnimator!!.cancel()
+      if (indicatorAnimator?.isRunning == true) {
+        indicatorAnimator?.cancel()
       }
 
       val targetView = getChildAt(position)
@@ -1443,13 +1444,14 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
           setDuration(duration.toLong())
           setFloatValues(0f, 1f)
           addUpdateListener {
-            setIndicatorPosition(lerp(startLeft, finalTargetLeft, animatedFraction), lerp(startRight, finalTargetRight, animatedFraction))
+            val animatedValue = it.animatedFraction
+            setIndicatorPosition(lerp(startLeft, finalTargetLeft, animatedValue), lerp(startRight, finalTargetRight, animatedValue))
             (getChildAt(position) as FuckTabView).apply {
-              updateTextColor(getTextColorByFraction(animatedFraction))
+              updateTextColor(getTextColorByFraction(animatedValue))
               updateTextSize(tabTextSize)
             }
             (getChildAt(selectedPosition) as FuckTabView).apply {
-              updateTextColor(getTextColorByFraction(1 - animatedFraction))
+              updateTextColor(getTextColorByFraction(1 - animatedValue))
               updateTextSize(tabTextSize)
             }
           }

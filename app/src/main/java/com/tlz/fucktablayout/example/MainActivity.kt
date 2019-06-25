@@ -67,11 +67,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     ftl_4.addTab(ftl_4.newTab().apply {
-      text = "默认"
+      text = "默认1"
       icon = getDrawable(R.mipmap.ic_launcher)
     })
     ftl_4.addTab(ftl_4.newTab().apply {
-      text = "距离"
+      text = "默认2"
+      icon = getDrawable(R.mipmap.ic_launcher)
+    }, false)
+    ftl_4.addTab(ftl_4.newTab().apply {
+      text = "默认3"
+      icon = getDrawable(R.mipmap.ic_launcher)
+    }, false)
+    ftl_4.addTab(ftl_4.newTab().apply {
+      text = "默认4"
+      icon = getDrawable(R.mipmap.ic_launcher)
+    }, false)
+    ftl_4.addTab(ftl_4.newTab().apply {
+      text = "默认5"
       icon = getDrawable(R.mipmap.ic_launcher)
     }, false)
   }
