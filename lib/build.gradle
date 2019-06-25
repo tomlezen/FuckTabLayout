@@ -8,7 +8,7 @@ android {
     compileSdkVersion 28
 
     compileOptions {
-        kotlinOptions.freeCompilerArgs += ['-module-name', "com.tlz.indexrecyclerview"]
+        kotlinOptions.freeCompilerArgs += ['-module-name', "com.tlz.fucktablayout"]
     }
 
     defaultConfig {
