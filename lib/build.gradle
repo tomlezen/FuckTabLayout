@@ -7,7 +7,9 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
 
-
+    compileOptions {
+        kotlinOptions.freeCompilerArgs += ['-module-name', "com.tlz.indexrecyclerview"]
+    }
 
     defaultConfig {
         minSdkVersion 14
