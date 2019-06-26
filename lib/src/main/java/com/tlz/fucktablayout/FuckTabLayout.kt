@@ -1020,30 +1020,31 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
       super.onMeasure(widthMeasureSpec, origHeightMeasureSpec)
 
       tv?.let {
+        var textSize = tabTextSize
         var maxLines = 2
 
         if (iv?.visibility == View.VISIBLE) {
           maxLines = defaultMaxLines
         } else if (it.lineCount > 1) {
-          tabTextSize = tabTextMultiLineSize
+          textSize = tabTextMultiLineSize
         }
 
         val curTextSize = it.textSize
         val curLineCount = it.lineCount
         val curMaxLines = TextViewCompat.getMaxLines(it)
 
-        if (tabTextSize != curTextSize || (curMaxLines >= 0 && maxLines != curMaxLines)) {
+        if (textSize != curTextSize || (curMaxLines >= 0 && maxLines != curMaxLines)) {
           var updateTextView = true
 
-          if (mode == MODE_FIXED && tabTextSize > curTextSize && curLineCount == 1) {
+          if (mode == MODE_FIXED && textSize > curTextSize && curLineCount == 1) {
             val layout = it.layout
-            if (layout == null || approximateLineWidth(layout, 0, tabTextSize) > measuredWidth - paddingLeft - paddingRight) {
+            if (layout == null || approximateLineWidth(layout, 0, textSize) > measuredWidth - paddingLeft - paddingRight) {
               updateTextView = false
             }
           }
 
           if (updateTextView) {
-            it.setTextSize(TypedValue.COMPLEX_UNIT_PX, tabTextSize)
+            it.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
             it.maxLines = maxLines
             super.onMeasure(widthMeasureSpec, origHeightMeasureSpec)
           }
@@ -1090,7 +1091,8 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
         defaultMaxLines = TextViewCompat.getMaxLines(tv!!)
       }
       TextViewCompat.setTextAppearance(tv!!, tabTextAppearance)
-      tv?.setTextColor(tabTextColors!!)
+      tv?.setTextColor(tabTextColors)
+      typeface = tv?.typeface
       updateTextAndIcon(tv, iv)
 
       isSelected = tab?.isSelected ?: false
@@ -1204,12 +1206,13 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
       tv?.setTextColor(color)
     }
 
-    fun updateTextSize(size: Float) {
-      tv?.setTextSize(TypedValue.COMPLEX_UNIT_PX, size)
+    var typeface: Typeface? = null
+
+    fun updateTextSize() {
       if (tabSelectedTextBold && tab?.isSelected == true) {
         tv?.typeface = Typeface.DEFAULT_BOLD
       } else {
-        tv?.typeface = Typeface.DEFAULT
+        tv?.typeface = typeface
       }
     }
   }
@@ -1386,11 +1389,11 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
       if (selectedPosition < childCount - 1) {
         (selectedTitle as FuckTabView).apply {
           updateTextColor(getTextColorByFraction(1 - selectionOffset))
-          updateTextSize(tabTextSize)
+          updateTextSize()
         }
         (getChildAt(selectedPosition + 1) as FuckTabView).apply {
           updateTextColor(getTextColorByFraction(selectionOffset))
-          updateTextSize(tabTextSize)
+          updateTextSize()
         }
       }
 
@@ -1448,11 +1451,11 @@ class FuckTabLayout(ctx: Context, attrs: AttributeSet) : HorizontalScrollView(ct
             setIndicatorPosition(lerp(startLeft, finalTargetLeft, animatedValue), lerp(startRight, finalTargetRight, animatedValue))
             (getChildAt(position) as FuckTabView).apply {
               updateTextColor(getTextColorByFraction(animatedValue))
-              updateTextSize(tabTextSize)
+              updateTextSize()
             }
             (getChildAt(selectedPosition) as FuckTabView).apply {
               updateTextColor(getTextColorByFraction(1 - animatedValue))
-              updateTextSize(tabTextSize)
+              updateTextSize()
             }
           }
           addListener(object : AnimatorListenerAdapter() {
