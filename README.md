@@ -6,7 +6,7 @@ FuckTabLayout是直接修改的TabLayout源码，将java代码改为了kotlin代
 ## Gradle
 
 ```
-implementation 'com.github.tomlezen:FuckTabLayout:1.0.2'
+implementation 'com.github.tomlezen:FuckTabLayout:1.0.8'
 ```
 ## 使用
 
