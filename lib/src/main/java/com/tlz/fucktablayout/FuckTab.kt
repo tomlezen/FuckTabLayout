@@ -47,6 +47,7 @@ class FuckTab(var parent: FuckTabLayout? = null, var view: FuckTabLayout.FuckTab
     }
 
     fun reset() {
+        position = INVALID_POSITION
         parent = null
         view = null
     }
